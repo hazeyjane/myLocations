@@ -8,7 +8,7 @@ The easiest way to preview this app is to import it to snack ide:
 
 - On the left panel right by the the "project" drop down, click on the three dot icon. Then click "import git reposetory".
 
-- Type in this reposetory url (https://github.com/hazeyjane/myLocations) and your all set.
+- Type in this reposetory url (https://github.com/hazeyjane/myLocations) and you're all set.
 
 
 
