@@ -12,7 +12,7 @@ The easiest way to preview this app is to import it to snack ide:
 
 
 
-Alternatively to run this locatlly, you must have expo-cli on your machine. Install the expo-cli through npm:
+Alternatively to run this locally, you must have expo-cli on your machine. Install the expo-cli through npm:
 ```
 npm install -g expo-cli
 ```
