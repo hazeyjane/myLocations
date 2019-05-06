@@ -92,11 +92,12 @@ class LocationList extends React.Component {
 
 	getSectionedData = () => {
 		const categories = this.props.locations.map(item => item.category);
-		const uniqueCtegories = Array.from(new Set(categories));
-		const sections = uniqueCtegories.map(cat => {
+		const uniqueCategories = Array.from(new Set(categories));
+		const sections = uniqueCategories.map(cat => {      
 			const data = this.props.locations.filter(item => item.category === cat)
       const catItem = this.props.categories.find(item => item.key == cat)
-			return { title: catItem.name, data: data }
+      const catName = cat == undefined ? '' : catItem.name;
+      return { title: catName, data: data }          		
 		});
 		return sections;
 	}
