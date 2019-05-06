@@ -2,6 +2,10 @@ import React from 'react';
 import { View, Modal, TouchableHighlight, Vibration, Text} from 'react-native';
 import { MapView } from 'expo';
 
+// a map modal component to appear on top of another compoennt
+// when the user clicks away from the map, this.props.onCloseAreaClick gets called
+// so the parent component can hide this component
+
 export default class Map extends React.Component {
   constructor(props) {
     super(props);

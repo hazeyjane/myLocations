@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, View, StyleSheet, Button, TouchableHighlight } from 'react-native';
 import { Ionicons, FontAwesome, Feather } from '@expo/vector-icons';
 
-// this component is the top toolbar
+// a top toolbar component with 4 buttons: add, edit, remove, toggle list group mode
 // props:
 // title: the title of the toolbar
 // onAddClick: a function to call when add button is clicked

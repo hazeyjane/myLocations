@@ -3,6 +3,8 @@ import { createBottomTabNavigator, createAppContainer } from 'react-navigation';
 import CategoryList from './CategoryList';
 import LocationList from './LocationList';
 
+// a bottom navbar compoennt with two tabs: Locations and Categories
+
 const TabNavigator = createBottomTabNavigator(
   {
     Locations: LocationList,
@@ -12,7 +14,7 @@ const TabNavigator = createBottomTabNavigator(
     tabBarOptions: {
       labelStyle: {
         fontSize: 14,
-		  marginBottom: 15
+		    marginBottom: 15
       },
     },
   }

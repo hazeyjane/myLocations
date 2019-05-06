@@ -4,8 +4,9 @@ import { connect } from 'react-redux';
 import LocationItem from './LocationItem';
 import ToolBar from './ToolBar';
 import { addLocation, removeLocation, updateLocation } from '../store/actions/location';
+import { addCategory } from '../store/actions/category';
 
-// this component is the locations list
+// this component is a list of LocationItem components
 
 class LocationList extends React.Component {
 	constructor(props) {
@@ -19,13 +20,20 @@ class LocationList extends React.Component {
 	}
 
 	componentWillMount() {
-		// Testing data
-		this.props.addLocation({ name: 'Loc1', lat: 37, lon: -122, category: 'shopping' });		
-		this.props.addLocation({ name: 'Loc2', lat: 25, lon: -24, category: 'hiking' });
-		this.props.addLocation({ name: 'Loc3', lat: 37, lon: -122, category: 'sport' });
-		this.props.addLocation({ name: 'Loc4', lat: 37, lon: -122, category: 'shopping' });
+		// testing data
+    this.props.addCategory({ name: 'shopping' });
+		this.props.addCategory({ name: 'hiking' });
+		this.props.addCategory({ name: 'sport' });
+		this.props.addLocation({ name: 'Loc1', lat: 37, lon: -122, category: 1 });		
+		this.props.addLocation({ name: 'Loc2', lat: 25, lon: -24, category: 1 });
+		this.props.addLocation({ name: 'Loc3', lat: 37, lon: -122, category: 2 });
+		this.props.addLocation({ name: 'Loc4', lat: 37, lon: -122, category: 2 });
 	}
 
+  // click handler for a LocationItem in the list
+  // when clicking away from a newely added item, it will be removed
+  // when clicking on the currently selected item, it will collapse
+  // when clicking on any other LocationItem, it will expand
 	handleListItemClick = (key) => {
 		if (this.state.selectedItem == -1) {
 			this.props.removeLocation(-1);
@@ -37,24 +45,35 @@ class LocationList extends React.Component {
 		}
 	}
 
+  // click handler for the add button
+  // a new LocationItem will be added to the list and
+  // state will be set to edit mode
 	handleAddClick = () => {
 		if (this.state.selectedItem == -1) {
 			return;
 		}
-		const newItem = { name: '', lat: '', lon: '', category: '' }
+		const newItem = { name: '', lat: '', lon: '', category: undefined }
 		this.props.addLocation(newItem, -1);
 		this.setState({ selectedItem: -1, inEdit: true });
 	}
 
+  // click handler for the edit button
+  // the state will be set to edit mode
 	handleEditClick = () => {
 		this.setState({ inEdit: true });
 	}
 
+  // click handler for the remove button
+  // selected item will be removed from the redux store
+  // edit mode will be set to false in the state
 	handleRemoveClick = () => {
 		this.props.removeLocation(this.state.selectedItem);
 		this.setState({ inEdit: false, selectedItem: undefined });
 	}
 
+  // click handler for the save button
+  // the category is saved to the redux store
+  // if the item is a newely added item, it will be given a newely generated id
 	handleSaveClick = (newItem) => {
 		const giveNewId = newItem.key == -1;
 		this.props.updateLocation(newItem, giveNewId);
@@ -164,4 +183,4 @@ const mapStateToProps = state => {
 
 // this componenr connects to redux store and gets the categories and locations data as props
 // it also gets the methods: addLocation, removeLocation, updateLocation
-export default connect(mapStateToProps, { addLocation, removeLocation, updateLocation })(LocationList);
+export default connect(mapStateToProps, { addLocation, removeLocation, updateLocation, addCategory })(LocationList);
