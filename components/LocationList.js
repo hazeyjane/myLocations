@@ -183,6 +183,6 @@ const mapStateToProps = state => {
 	};
 }
 
-// this componenr connects to redux store and gets the categories and locations data as props
-// it also gets the methods: addLocation, removeLocation, updateLocation
+// this component connects to redux store and gets the categories and locations data as props
+// it also gets the methods: addLocation, removeLocation, updateLocation, addCategory
 export default connect(mapStateToProps, { addLocation, removeLocation, updateLocation, addCategory })(LocationList);
