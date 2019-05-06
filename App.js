@@ -16,7 +16,7 @@ export default class App extends React.Component {
   }
 
   render() {
-    // wrapping our app with a provider sp we can access the redux store
+    // wrapping our app with a provider so we can access the redux store
     // from child components
     return (
       <Provider store={store}>
