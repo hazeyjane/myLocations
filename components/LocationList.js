@@ -95,7 +95,8 @@ class LocationList extends React.Component {
 		const uniqueCtegories = Array.from(new Set(categories));
 		const sections = uniqueCtegories.map(cat => {
 			const data = this.props.locations.filter(item => item.category === cat)
-			return { title: cat, data: data }
+      const catItem = this.props.categories.find(item => item.key == cat)
+			return { title: catItem.name, data: data }
 		});
 		return sections;
 	}
